@@ -1,0 +1,44 @@
+{
+  "module": "m1_discretize",
+  "reproduction_guide": "paper05_replication.md \u00a75",
+  "source_mesh": {
+    "vertices": 12,
+    "faces": 20,
+    "watertight": true,
+    "area": 0.1024,
+    "units": "m"
+  },
+  "mesh_area": 0.1024,
+  "target_patches": 1000,
+  "patch_count": 976,
+  "count_error_pct": -2.4,
+  "discretization": {
+    "method": "uniform resampling: quadric decimation (fast-simplification) + subdivide_to_size (trimesh remesh)",
+    "decimated_from": null,
+    "final_decimated_from": null,
+    "target_edge_length": 0.010119288512538814,
+    "resampled_watertight": true,
+    "resampled_closed": true
+  },
+  "bounds_min": [
+    -0.1,
+    -0.06,
+    -0.06
+  ],
+  "bounds_max": [
+    0.1,
+    0.06,
+    0.06
+  ],
+  "checks": {
+    "patch_count_within_5pct": true,
+    "normals_unit": true,
+    "outward_normals": [
+      976,
+      976
+    ],
+    "edge_std_over_mean": 0.3281,
+    "edge_uniformity_within_0_5": true
+  },
+  "created": "2026-10-03T06:59:04"
+}

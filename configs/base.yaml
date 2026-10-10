@@ -1,0 +1,41 @@
+# paper_05 复现总参数表（paper05_replication.md §14）
+# 用法：python -m src.m1_discretize --config configs/base.yaml --mesh ...
+
+# ── 论文给定（勿改）────────────────────────────
+sensor:
+  fov_h_deg: 30.0        # FOV 水平
+  fov_v_deg: 21.0        # FOV 垂直
+  fod_min: 0.40          # m
+  fod_max: 1.00          # m
+  max_viewing_angle_deg: 75.0
+  pixels: [536, 371]     # 仅渲染用
+coverage_delta: 0.995
+inspection_time_w0: 1.0  # s/视点
+candidates: [200, 300, 400]
+
+# ── 工程自选（论文未给出，报告时注明）──────────
+visibility:
+  ray_eps: 0.001        # 遮挡射线自命中容差（m，网格单位）——指南 §7.1 的 1e-3
+
+# ── 复现者自选（论文未给出，报告时注明）────────
+mesh:
+  target_patches: 1000
+sampling:
+  d_max: 0.30            # Eq.10 势场纳入距离（m）——指南 §6 初值，按 §6.4 诊断图调
+  seed: 0
+  reachability: {base: [0.9, 0, 0], r_min: 0.55, r_max: 1.30}
+  position:
+    distance_margin: 0.05   # 距离下界 = bbox 半对角 + FOD_min + margin（指南 §6.1）
+    table_clearance: 0.05   # 桌面平面 z = bbox_min_z - clearance（指南 §4）
+travel_proxy:
+  alpha: 1.2             # s/m
+  beta: 0.4              # s/rad
+  home_pose: {offset: [0.9, 0, 0.6]}   # 相对工件中心
+rkga:
+  pop: 200
+  elite: 0.15
+  gens: 150
+  early_stop: 30
+  crossover_bias: 0.7
+  mutation: 0.02
+  trials: 10

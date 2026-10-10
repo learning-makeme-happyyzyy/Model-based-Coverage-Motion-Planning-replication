@@ -1,0 +1,54 @@
+{
+  "module": "m3_visibility",
+  "reproduction_guide": "paper05_replication.md \u00a77",
+  "paper_criteria": "patch visible iff ALL vertices satisfy FOV & FOD & occlusion, and the patch viewing angle <= 75 deg (paper text)",
+  "source_surface": "/Users/yangzhouyiyang/Desktop/Trad_replication/data/outputs/S_bracket_1000.npz",
+  "source_viewpoints": "V_bracket_300.npz",
+  "parameters": {
+    "fod": [
+      0.4,
+      1.0
+    ],
+    "fov_deg": [
+      30.0,
+      21.0
+    ],
+    "max_view_angle_deg": 75.0,
+    "ray_eps": 0.001,
+    "ray_mesh": "discretized workpiece mesh from patch vertices (490 vertices, 976 faces)"
+  },
+  "provenance": {
+    "paper": "FOV 30x21 deg (horizontal x vertical), FOD (0.40, 1.00) m, viewing angle 75 deg, vertex-based visibility, no-occlusion criterion",
+    "ambiguity": "the paper does not define which angle the 75 deg viewing angle refers to; angle((viewpoint -> patch center), outward normal) follows the guide's \u00a77.5 worked examples (the guide's \u00a77.1 snippet has a sign slip -- see module docstring)",
+    "engineering": "FOV/FOD/viewing-angle boundaries inclusive; ray self-hit epsilon 1e-3 m (guide \u00a77.1); camera roll convention from M2"
+  },
+  "elapsed_s": 5.97,
+  "created": "2026-10-04T02:21:04",
+  "stats": {
+    "shape": [
+      300,
+      976
+    ],
+    "density": 0.27123975409836065,
+    "row_sum": {
+      "min": 0,
+      "median": 288.0,
+      "max": 556,
+      "mean": 264.73,
+      "zero_rows": 20
+    },
+    "col_sum": {
+      "min": 0,
+      "median": 90.0,
+      "max": 199,
+      "zero_cols": 165,
+      "uncovered_patches": 165
+    },
+    "union_coverage_all_viewpoints": 0.8309426229508197,
+    "best_single_viewpoint": {
+      "id": 3,
+      "coverage": 0.569672131147541,
+      "patches": 556
+    }
+  }
+}
